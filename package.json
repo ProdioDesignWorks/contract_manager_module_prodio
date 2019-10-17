@@ -1,6 +1,6 @@
 {
   "name": "contract_manager_module_prodio",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "NPM Module for Contract Manager Services",
   "main": "lib/index.js",
   "scripts": {

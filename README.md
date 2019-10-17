@@ -34,25 +34,15 @@ $ npm install contract_manager_module_prodio@latest --save
 
 # FIRST STEP
 
-The QBO has Oauth2.0 Authentication process. So it requires to verify our app FOR THE VERY FIRST TIME MANUALLY, with the QB App created to get app access token, then from next time the code will auto create the refresh token, before the expiration of the current token.
+1. You will have to login into eSignGenie Account.
 
-1. You will need to login into QuickBooks developer account.
+2. Get the ClientId and ClientSecret from the dashboard.
 
-2. You will have to create a app ( sometimes there is already default app created ).
+3. Add those in the config jsons based on environment. These config jsons are available in the service apis inside the "config" folder as "eSignConfig.json"
 
-3. You will have to insert your API Callback URL in the app settings page.
+4. Mandatory steps - you are expected to create all the custom fields ( your database fields whose values you want to show/change in the contracts )
 
-4. You will have to copy `clientId` and `clientSecret` keys from the app settings, and put inside the `QBConfig.json` file.
-
-5. You can make different different apps for diff diff environments.
-
-6. After you the APIs on the host and its running -- use this URL to verify once.
-
-http://{DOMAIN}:3050/api/Oauth2Data/connectQuickBooks
-
-7. Note that, this is One Time Process, which has to be done prior using the APIs.
-
-8. After successful connection, you will see a JSON displayed on the browser. You will have to ignore that.
+5. After creating all the personalized fields in the dashboard, you will have to create those in the module also using the ADD_PERSONALIZED_FIELDS method.
 
   
 # Initialization 
