@@ -1,0 +1,7 @@
+{
+    "businessId":"324asdf134rdfs31243rdf", /* Site or business id from your system */
+    "fields":[
+        "PatientName",
+        "BusinessName"
+    ]
+}

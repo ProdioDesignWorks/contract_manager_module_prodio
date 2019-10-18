@@ -1,0 +1,20 @@
+{
+    "contractId":"324asdf134rdfs31243rdf", /* Site or business id from your system */
+    "businessId":"324asdf134rdfs31243rdf", /* Site or business id from your system */
+    "contractName":"TestName", /*Must be remote url and madatory*/
+    "templateIds":["123safddcasf","adcasfdasf4123421"], /*Mandatory - Array of Template IDS*/
+    "customFields":{                                              /* This will contain all the personalized fields you created in the dashboard*/
+        "PatientName":"Shashikant Sharma",
+        "Address":""
+    },
+    "themeColor":"#f4e542", /*Mandatory*/
+    "receivers":[
+        {
+            "firstName":"Shashikant",
+			"lastName":"Sharma",
+			"emailId":"shashikant@prodio.in"
+        }
+    ],
+    "successUrl":"", /*Mandatory*/
+    "errorUrl":"" /*Mandatory*/
+}
