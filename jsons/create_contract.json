@@ -15,5 +15,6 @@
         }
     ],
     "successUrl":"", /*Mandatory*/
-    "errorUrl":"" /*Mandatory*/
+    "errorUrl":"", /*Mandatory*/
+    "metaData":{}
 }

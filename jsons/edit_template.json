@@ -1,5 +1,6 @@
 {
     "businessId":"324asdf134rdfs31243rdf", /* Site or business id from your system */
+    "templateId":"q4123422-112-34214-ad12322", /*Mandatory*/
     "templateName":"template name", /*Optional*/,
     "templateDescription":""
 }
