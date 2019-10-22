@@ -73,6 +73,9 @@ function ContractManagerServices(BASE_URL) {
         case "SEND_CONTRACT":
           return funSendContract(BASE_URL,payload,callback);
         break;
+        case "ASSIGN_WEBHOOK_URL":
+          return funAssignWebhook(BASE_URL,payload,callback);
+        break;
         default:
           let errorMessage = `Please add BaseUrl.`;
           return errorMessage;
@@ -312,6 +315,24 @@ const funSendContract = function (BASE_URL,payload,callback) {
   }
 
   let url = `${BASE_URL}Contracts/sendContract`;
+  axios.post(url, payload).then(response => {
+    //console.log(response)
+    return callback(response);
+  })
+  .catch((error) => {
+    let json = stringify(error);
+    return callback(json);
+  });
+}
+
+
+
+const funAssignWebhook = function (BASE_URL,payload,callback) {
+  if (isNull(payload["meta"]["businessId"])) {
+    return callback(new HttpErrors.BadRequest('businessId is mandatory.', { expose: false }));
+  }
+
+  let url = `${BASE_URL}BizProfile/saveWebhookUrlForBiz`
   axios.post(url, payload).then(response => {
     //console.log(response)
     return callback(response);

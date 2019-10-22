@@ -1,0 +1,4 @@
+{
+    "businessId":"324asdf134rdfs31243rdf", /* Site or business id from your system */
+    "webhookUrl":"https://cexchange.s3.ap-south-1.amazonaws.com/courses/lessions/documents/pdf1568202927632_sample.pdf", /*Must be remote url and madatory*/
+}

@@ -213,6 +213,9 @@ Require the contract_manager_module_prodio module and initialize the quickbooks 
  	You can convert a template into contract by providing the actual values of custom fields added inside the template. So in this function you have to pass all the personalized fields created with their actual values which you want to see with respect to particular receiver.
  	The contract can also contrain multiple templates init.
  	You just have to the required template Ids in the array.
+ 	Note:
+ 	1. There is "metaData" Object key in the request payload.
+ 	2. In this you can send any custom information about your business which you want to get in return while webhook
 
 
 ### Payload
@@ -286,3 +289,30 @@ Require the contract_manager_module_prodio module and initialize the quickbooks 
 | --- | ---- | ----- | ----------- | -------- |
 | `action` | string | `CREATE_SEND_CONTRACT` | key which defines the type of action to be performed | YES |
 | `meta` | json | [SAMPLE_META_INFO](/jsons/create_and_send_contract.json) | Json having business details. | YES |
+
+
+`13. ASSIGN WEBHOOK URL FOR BUSINESS:`
+
+ 	With this method, you can assign any webhook url where you wants to receive following events. You can now only have one webhook url at a time.
+ 	You get webhook events for following events -
+ 	1. contract_sent 
+ 	2. contract_viewed 
+ 	3. contract_signed
+ 	4. contract_cancelled
+ 	5. contract_executed
+ 	6. contract_deleted
+
+ 	Note :
+ 	1. You have to create HTTPS url and add that url to Your eSignGenie Account.
+ 	2. Your above HTTPS url should call this api url - 
+ 	http://{{HOST}}:3050/api/BizProfile/saveWebhookUrlForBiz
+ 	3. So now whatever API URL you save as WEBHOOK URL in this method- it has to be POST
+ 	And here only you will receive above events with "contractId".
+
+
+### Payload
+
+| Key | Type | Value | Description | Required |
+| --- | ---- | ----- | ----------- | -------- |
+| `action` | string | `ASSIGN_WEBHOOK_URL` | key which defines the type of action to be performed | YES |
+| `meta` | json | [SAMPLE_META_INFO](/jsons/assign_webhook.json) | Json having business details. | YES |
