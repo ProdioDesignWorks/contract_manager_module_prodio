@@ -252,9 +252,9 @@ Require the contract_manager_module_prodio module and initialize the quickbooks 
 | `meta` | json | [SAMPLE_META_INFO](/jsons/delete_contract.json) | Json having business details. | YES |
 
 
-`11. LIST ALL CONTRACTS:`
+`11. LIST ALL CONTRACTS FOR BUSINESS:`
 
- 	This will return listing of all contracts created so far with respect to a business.
+ 	This will return listing of all contracts of the business created so far with respect to a business.
 
 
 ### Payload
@@ -262,7 +262,7 @@ Require the contract_manager_module_prodio module and initialize the quickbooks 
 | Key | Type | Value | Description | Required |
 | --- | ---- | ----- | ----------- | -------- |
 | `action` | string | `DELETE_CONTRACT` | key which defines the type of action to be performed | YES |
-| `meta` | json | [SAMPLE_META_INFO](/jsons/delete_contract.json) | Json having business details. | YES |
+| `meta` | json | [SAMPLE_META_INFO](/jsons/list_all_contracts.json) | Json having business details. | YES |
 
 
 `11. SEND CONTRACT:`
@@ -316,3 +316,30 @@ Require the contract_manager_module_prodio module and initialize the quickbooks 
 | --- | ---- | ----- | ----------- | -------- |
 | `action` | string | `ASSIGN_WEBHOOK_URL` | key which defines the type of action to be performed | YES |
 | `meta` | json | [SAMPLE_META_INFO](/jsons/assign_webhook.json) | Json having business details. | YES |
+
+
+
+`14. LIST ALL CONTRACTS FOR USERS:`
+
+ 	This will return listing of all contracts of any user created so far with respect to a business.
+
+
+### Payload
+
+| Key | Type | Value | Description | Required |
+| --- | ---- | ----- | ----------- | -------- |
+| `action` | string | `LIST_CONTRACTS_FOR_USER` | key which defines the type of action to be performed | YES |
+| `meta` | json | [SAMPLE_META_INFO](/jsons/list_all_contracts_for_user.json) | Json having business details. | YES |
+
+
+`15. CHECK IF TEMPLATE HAS SIGNING FIELDS OR NOT:`
+
+ 	This will check if the admin has added signings fields (atleast 2) or not.
+
+
+### Payload
+
+| Key | Type | Value | Description | Required |
+| --- | ---- | ----- | ----------- | -------- |
+| `action` | string | `TEMPLATE_SIGNING_FIELDS_CHECK` | key which defines the type of action to be performed | YES |
+| `meta` | json | [SAMPLE_META_INFO](/jsons/check_signing_fields.json) | Json having business details. | YES |
