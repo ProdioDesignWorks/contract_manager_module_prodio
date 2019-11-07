@@ -261,7 +261,7 @@ Require the contract_manager_module_prodio module and initialize the quickbooks 
 
 | Key | Type | Value | Description | Required |
 | --- | ---- | ----- | ----------- | -------- |
-| `action` | string | `DELETE_CONTRACT` | key which defines the type of action to be performed | YES |
+| `action` | string | `LIST_CONTRACTS` | key which defines the type of action to be performed | YES |
 | `meta` | json | [SAMPLE_META_INFO](/jsons/list_all_contracts.json) | Json having business details. | YES |
 
 
