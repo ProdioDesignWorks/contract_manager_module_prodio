@@ -67,6 +67,9 @@ function ContractManagerServices(BASE_URL) {
         case "LIST_CONTRACTS":
           return funListContracts(BASE_URL,payload,callback);
         break;
+        case "LIST_CONTRACTS_FOR_USER":
+          return funListContractsForUser(BASE_URL,payload,callback);
+        break;
         case "CREATE_SEND_CONTRACT":
           return funCreateAndSendContract(BASE_URL,payload,callback);
         break;
@@ -75,6 +78,9 @@ function ContractManagerServices(BASE_URL) {
         break;
         case "ASSIGN_WEBHOOK_URL":
           return funAssignWebhook(BASE_URL,payload,callback);
+        break;
+        case "TEMPLATE_SIGNING_FIELDS_CHECK":
+          return funCheckIfTemplateHasSigningFields(BASE_URL,payload,callback);
         break;
         default:
           let errorMessage = `Please add BaseUrl.`;
@@ -290,6 +296,27 @@ const funListContracts = function (BASE_URL,payload,callback) {
   });
 }
 
+const funListContractsForUser = function (BASE_URL,payload,callback) {
+  if (isNull(payload["meta"]["businessId"])) {
+    return callback(new HttpErrors.BadRequest('businessId is mandatory.', { expose: false }));
+  }
+
+  if (isNull(payload["meta"]["emailId"])) {
+    return callback(new HttpErrors.BadRequest('emailId is mandatory.', { expose: false }));
+  }
+
+  let url = `${BASE_URL}Contracts/listContractsForUser`;
+  axios.post(url, payload).then(response => {
+    //console.log(response)
+    return callback(response);
+  })
+  .catch((error) => {
+    let json = stringify(error);
+    return callback(json);
+  });
+}
+
+
 
 const funCreateAndSendContract = function (BASE_URL,payload,callback) {
   if (isNull(payload["meta"]["businessId"])) {
@@ -342,5 +369,27 @@ const funAssignWebhook = function (BASE_URL,payload,callback) {
     return callback(json);
   });
 }
+
+const funCheckIfTemplateHasSigningFields = function (BASE_URL,payload,callback) {
+  if (isNull(payload["meta"]["businessId"])) {
+    return callback(new HttpErrors.BadRequest('businessId is mandatory.', { expose: false }));
+  }
+
+  if (isNull(payload["meta"]["templateId"])) {
+    return callback(new HttpErrors.BadRequest('templateId is mandatory.', { expose: false }));
+  }
+
+  let url = `${BASE_URL}Templates/checkSigningFields`
+  axios.post(url, payload).then(response => {
+    //console.log(response)
+    return callback(response);
+  })
+  .catch((error) => {
+    let json = stringify(error);
+    return callback(json);
+  });
+}
+
+
 
 module.exports = ContractManagerServices;
