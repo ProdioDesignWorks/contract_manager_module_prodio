@@ -1,3 +1,4 @@
 {
     "businessId":"324asdf134rdfs31243rdf", /* Mandatory */
+    "userId":"324asdf134rdfs31243rdfwerew" /*If userId sent it will find userId with businessId*/
 }
