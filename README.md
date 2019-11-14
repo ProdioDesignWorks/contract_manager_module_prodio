@@ -305,7 +305,7 @@ Require the contract_manager_module_prodio module and initialize the quickbooks 
  	Note :
  	1. You have to create HTTPS url and add that url to Your eSignGenie Account.
  	2. Your above HTTPS url should call this api url - 
- 	http://{{HOST}}:3050/api/BizProfile/saveWebhookUrlForBiz
+ 	http://{{HOST}}:3050/api/Contracts/decodeWebHook
  	3. So now whatever API URL you save as WEBHOOK URL in this method- it has to be POST
  	And here only you will receive above events with "contractId".
 
