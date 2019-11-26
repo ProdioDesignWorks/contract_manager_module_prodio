@@ -55,6 +55,9 @@ function ContractManagerServices(BASE_URL) {
         case "LIST_TEMPLATES":
           return funListTemplates(BASE_URL,payload,callback);
         break;
+        case "TEMPLATES_LIST_USER_DATA":
+          return funGetTemplatesWithUser(BASE_URL,payload,callback);
+        break;
         case "CREATE_CONTRACT":
           return funCreateContract(BASE_URL,payload,callback);
         break;
@@ -219,6 +222,26 @@ const funListTemplates = function (BASE_URL,payload,callback) {
   }
 
   let url = `${BASE_URL}Templates/listAllTemplates`;
+  axios.post(url, payload).then(response => {
+    //console.log(response)
+    return callback(response);
+  })
+  .catch((error) => {
+    let json = stringify(error);
+    return callback(json);
+  });
+}
+
+const funGetTemplatesWithUser = function (BASE_URL,payload,callback) {
+  if (isNull(payload["meta"]["businessId"])) {
+    return callback(new HttpErrors.BadRequest('businessId is mandatory.', { expose: false }));
+  }
+
+  if (isNull(payload["meta"]["emailId"])) {
+    return callback(new HttpErrors.BadRequest('emailId is mandatory.', { expose: false }));
+  }
+
+  let url = `${BASE_URL}Templates/templatesWithUserData`;
   axios.post(url, payload).then(response => {
     //console.log(response)
     return callback(response);
