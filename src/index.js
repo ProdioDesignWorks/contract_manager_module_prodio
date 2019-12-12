@@ -73,6 +73,9 @@ function ContractManagerServices(BASE_URL) {
         case "LIST_CONTRACTS_FOR_USER":
           return funListContractsForUser(BASE_URL,payload,callback);
         break;
+        case "USER_ALL_CONTRACTS":
+          return funGetUserAllContracts(BASE_URL,payload,callback);
+        break;
         case "CREATE_SEND_CONTRACT":
           return funCreateAndSendContract(BASE_URL,payload,callback);
         break;
@@ -339,7 +342,21 @@ const funListContractsForUser = function (BASE_URL,payload,callback) {
   });
 }
 
+const funGetUserAllContracts = function (BASE_URL,payload,callback) {
+  if (isNull(payload["meta"]["emailId"])) {
+    return callback(new HttpErrors.BadRequest('emailId is mandatory.', { expose: false }));
+  }
 
+  let url = `${BASE_URL}Contracts/userAllContracts`;
+  axios.post(url, payload).then(response => {
+    //console.log(response)
+    return callback(response);
+  })
+  .catch((error) => {
+    let json = stringify(error);
+    return callback(json);
+  });
+}
 
 const funCreateAndSendContract = function (BASE_URL,payload,callback) {
   if (isNull(payload["meta"]["businessId"])) {
