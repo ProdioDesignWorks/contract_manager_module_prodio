@@ -33,7 +33,7 @@
   },
   "homepage": "https://github.com/ProdioDesignWorks/contract_manager_module_prodio#readme",
   "dependencies": {
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "braces": "^2.3.1",
     "flatted": "^2.0.0",
     "http-errors": "^1.7.2"
